@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity"/>
+        <activity android:name=".SettingActivity"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -36,8 +37,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <!--读写SD卡-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <!--安装apk-->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>

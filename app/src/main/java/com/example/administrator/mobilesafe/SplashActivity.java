@@ -45,7 +45,7 @@ public class SplashActivity extends Activity {
     protected static final int MSG_UPDATE_DIALOG = 1;
     private static final int MSG_HTTP_FAILURE = 2;
     private static final int MSG_IO_ERROR = 3;
-    private static final int MSG_JSON_ERROR = 4 ;
+    private static final int MSG_JSON_ERROR = 4;
     private TextView tv_version;
     private ProgressBar pb_bar;
     private String code;
@@ -54,33 +54,32 @@ public class SplashActivity extends Activity {
 
     private String versionName;
     private String sdPath;
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
 
-         switch(msg.what){
-             case MSG_UPDATE_DIALOG:
-             showDialog();
-          break;
-             case MSG_HTTP_FAILURE:
-                 Toast.makeText(getApplicationContext(),"请检查你的网络",Toast.LENGTH_LONG);
-                 enterHome();
-                 break;
-             case MSG_IO_ERROR:
-                 Toast.makeText(getApplicationContext(),"错误号"+MSG_IO_ERROR,Toast.LENGTH_LONG);
-                 enterHome();
-                 break;
-             case MSG_JSON_ERROR:
-                 Toast.makeText(getApplicationContext(),"错误号"+MSG_JSON_ERROR,Toast.LENGTH_LONG);
-                 enterHome();
-                 break;
-             default:
-          break;
-         }
+            switch (msg.what) {
+                case MSG_UPDATE_DIALOG:
+                    showDialog();
+                    break;
+                case MSG_HTTP_FAILURE:
+                    Toast.makeText(getApplicationContext(), "请检查你的网络", Toast.LENGTH_LONG);
+                    enterHome();
+                    break;
+                case MSG_IO_ERROR:
+                    Toast.makeText(getApplicationContext(), "错误号" + MSG_IO_ERROR, Toast.LENGTH_LONG);
+                    enterHome();
+                    break;
+                case MSG_JSON_ERROR:
+                    Toast.makeText(getApplicationContext(), "错误号" + MSG_JSON_ERROR, Toast.LENGTH_LONG);
+                    enterHome();
+                    break;
+                default:
+                    break;
+            }
 
         }
     };
-
 
 
     @Override
@@ -110,28 +109,27 @@ public class SplashActivity extends Activity {
      * 更新弹窗
      */
     private void showDialog() {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setCancelable(false);
-    builder.setTitle("新版本" + code);
-    builder.setIcon(R.drawable.ic_launcher);
-    builder.setMessage(desc);
-    builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-             downLoadApk();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("新版本" + code);
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setMessage(desc);
+        builder.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                downLoadApk();
 
-        }
-    });
-    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-            enterHome();
-        }
-    });
-    builder.show();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                enterHome();
+            }
+        });
+        builder.show();
     }
-
 
 
     /**
@@ -184,8 +182,8 @@ public class SplashActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.VIEW");
         intent.addCategory("android.intent.category.DEFAULT");
-        intent.setDataAndType(Uri.fromFile(new File( sdPath,"app-debug.apk")),"application/vnd.android.package-archive");
-        startActivityForResult(intent,0);
+        intent.setDataAndType(Uri.fromFile(new File(sdPath, "app-debug.apk")), "application/vnd.android.package-archive");
+        startActivityForResult(intent, 0);
 
 
     }
@@ -207,87 +205,81 @@ public class SplashActivity extends Activity {
 //    });
 
 
-
-
     /**
      * 跳转首页
      */
     private void enterHome() {
-        Intent intent = new Intent(this ,HomeActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finish();
     }
 
 
-
-
     private void update() {
 
 
-   new Thread(){
-       @Override
-       public void run() {
+        new Thread() {
+            @Override
+            public void run() {
 
-           final long startTime = System.currentTimeMillis();
+                final long startTime = System.currentTimeMillis();
 
-           final Message message = new Message();
-           //1.创建OkHttpClient对象
-           OkHttpClient okHttpClient = new OkHttpClient();
-           //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
-           final Request request = new Request.Builder().url("http://116.62.124.102:28080/updateInfo.html").method("GET",null).build();
-           //3.创建一个call对象,参数就是Request请求对象
-           Call call = okHttpClient.newCall(request);
-           //4.请求加入调度，重写回调方法
-           call.enqueue(new Callback() {
-               //请求失败执行的方法
-               @SuppressLint("ShowToast")
-               @Override
-               public void onFailure(Call call, IOException e) {
-                   System.out.println("请求失败");
-                   message.what = MSG_HTTP_FAILURE;
-               }
-               //请求成功执行的方法
-               @SuppressLint("ShowToast")
-               @Override
-               public void onResponse(Call call, Response response)  {
-                   System.out.println("请求成功");
-                   try {
+                final Message message = new Message();
+                //1.创建OkHttpClient对象
+                OkHttpClient okHttpClient = new OkHttpClient();
+                //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
+                final Request request = new Request.Builder().url("http://116.62.124.102:28080/updateInfo.html").method("GET", null).build();
+                //3.创建一个call对象,参数就是Request请求对象
+                Call call = okHttpClient.newCall(request);
+                //4.请求加入调度，重写回调方法
+                call.enqueue(new Callback() {
+                    //请求失败执行的方法
+                    @SuppressLint("ShowToast")
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        System.out.println("请求失败");
+                        message.what = MSG_HTTP_FAILURE;
+                    }
 
-                       String dataJson = response.body().string();
-                       JSONObject jsonObject = new JSONObject(dataJson);
-                       code = jsonObject.get("code").toString();
-                       apkUrl = jsonObject.get("apkUrl").toString();
-                       desc = jsonObject.get("desc").toString();
+                    //请求成功执行的方法
+                    @SuppressLint("ShowToast")
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        System.out.println("请求成功");
+                        try {
 
-                       //如果code的版本和软件的版本不一致就弹出对话框
-                       if(!code.equals(versionName)){
-                           message.what = MSG_UPDATE_DIALOG;
-                       }
+                            String dataJson = response.body().string();
+                            JSONObject jsonObject = new JSONObject(dataJson);
+                            code = jsonObject.get("code").toString();
+                            apkUrl = jsonObject.get("apkUrl").toString();
+                            desc = jsonObject.get("desc").toString();
 
-                   } catch (IOException e) {
-                       e.printStackTrace();
-                       message.what = MSG_IO_ERROR;
-                   } catch (JSONException e) {
-                       e.printStackTrace();
-                       message.what = MSG_JSON_ERROR;
-                   } finally {
-                       long endTime = System.currentTimeMillis();
-                       long time = startTime - endTime;
-                       if(time<2000){
-                           SystemClock.sleep(2000-time);
-                       }
-                       handler.sendMessage(message);
-                   }
+                            //如果code的版本和软件的版本不一致就弹出对话框
+                            if (!code.equals(versionName)) {
+                                message.what = MSG_UPDATE_DIALOG;
+                            }
 
-
-               }
-           });
-
-       }
-   }.start();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            message.what = MSG_IO_ERROR;
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            message.what = MSG_JSON_ERROR;
+                        } finally {
+                            long endTime = System.currentTimeMillis();
+                            long time = startTime - endTime;
+                            if (time < 2000) {
+                                SystemClock.sleep(2000 - time);
+                            }
+                            handler.sendMessage(message);
+                        }
 
 
+                    }
+                });
 
+            }
+        }.start();
 
 
 //        new Thread(){
@@ -321,13 +313,11 @@ public class SplashActivity extends Activity {
     }
 
 
-
-
     public String getVersionName() {
         PackageManager pm = getPackageManager();
         PackageInfo packageInfo = null;
         try {
-            packageInfo = pm.getPackageInfo(getPackageName(),0);
+            packageInfo = pm.getPackageInfo(getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return null;
@@ -340,24 +330,13 @@ public class SplashActivity extends Activity {
     /**
      * 请求授权
      */
-    private void requestPermission(){
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){ //表示未授权时
-            //进行授权
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){ //表示未授权时
-            //进行授权
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
-        }
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.REQUEST_INSTALL_PACKAGES) != PackageManager.PERMISSION_GRANTED){ //表示未授权时
-            //进行授权
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.REQUEST_INSTALL_PACKAGES},3);
+    private void requestPermission() {
+        String str[] = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.REQUEST_INSTALL_PACKAGES};
+        for (int i = 0; i < str.length; i++) {
+            if (ContextCompat.checkSelfPermission(this, str[i]) != PackageManager.PERMISSION_GRANTED) { //表示未授权时
+                //进行授权
+                ActivityCompat.requestPermissions(this, new String[]{str[i]}, i);
+            }
         }
 
     }
@@ -365,18 +344,19 @@ public class SplashActivity extends Activity {
 
     /**
      * 权限申请返回结果
-     * @param requestCode 请求码
-     * @param permissions 权限数组
-     * @param grantResults  申请结果数组，里面都是int类型的数
+     *
+     * @param requestCode  请求码
+     * @param permissions  权限数组
+     * @param grantResults 申请结果数组，里面都是int类型的数
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case 1:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){ //同意权限申请
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) { //同意权限申请
 
-                }else { //拒绝权限申请
+                } else { //拒绝权限申请
                     requestPermission();
                 }
                 break;
@@ -393,12 +373,11 @@ public class SplashActivity extends Activity {
             Uri contentUri = FileProvider.getUriForFile(context, "com.example.administrator.mobilesafe", new File(filePath));
             intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
         } else {
-            intent.setDataAndType( Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
+            intent.setDataAndType(Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }
         context.startActivity(intent);
     }
-
 
 
     /**
@@ -409,13 +388,13 @@ public class SplashActivity extends Activity {
             boolean b = getPackageManager().canRequestPackageInstalls();
             System.out.println("是否有安装权限:" + b);
             if (b) {
-                installApkFile(getBaseContext(),sdPath+"/app-debug.apk");//安装应用的逻辑(写自己的就可以)
+                installApkFile(getBaseContext(), sdPath + "/app-debug.apk");//安装应用的逻辑(写自己的就可以)
             } else {
                 //请求安装未知应用来源的权限
                 requestPermission();
             }
         } else {
-            installApkFile(getBaseContext(),sdPath+"/app-debug.apk");
+            installApkFile(getBaseContext(), sdPath + "/app-debug.apk");
         }
 
     }
