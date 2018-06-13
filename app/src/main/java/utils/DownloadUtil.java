@@ -1,5 +1,7 @@
 package utils;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 
@@ -68,6 +70,7 @@ public class DownloadUtil {
                     // 下载完成
                     listener.onDownloadSuccess();
                 } catch (Exception e) {
+                    e.printStackTrace();
                     listener.onDownloadFailed();
                 } finally {
                     try {
@@ -129,6 +132,21 @@ public class DownloadUtil {
         void onDownloadFailed();
     }
 
+//    /**
+//     * 安装APK文件
+//     */
+//    private void installApk()
+//    {
+//        File apkfile = new File(mSavePath, mHashMap.get("name"));
+//        if (!apkfile.exists())
+//        {
+//            return;
+//        }
+//        // 通过Intent安装APK文件
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+//        i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
+//        mContext.startActivity(i);
+//    }
 
 }
 

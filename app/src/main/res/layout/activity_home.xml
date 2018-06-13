@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:text="我们是首页"
+        android:id="@+id/tv_home"
+        android:text="功能列表"
+        android:textSize="26sp"
+        android:background="#a3ea69"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:text="我是杀手杀手杀杀手，哈哈哈哈哈哈，怎么回事了啊！！！！！我是杀手杀手杀杀手，哈哈哈哈哈哈，怎么回事了啊！！！！！"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <GridView
+        android:id="@+id/gv_content"
+        android:layout_marginTop="20dp"
+        android:numColumns="3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
 
 </LinearLayout>
