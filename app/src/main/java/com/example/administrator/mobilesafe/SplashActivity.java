@@ -147,8 +147,8 @@ public class SplashActivity extends Activity {
                 public void onDownloadSuccess() {
                     System.out.println("下载完成");
                     //installApk();
-
-                    checkIsAndroidO();
+                    System.out.println("安装软件");
+///                    checkIsAndroidO();
 //                    installApkFile(getBaseContext(),"/mnt/sdcard/Download/app-debug.apk");
                 }
 
@@ -169,24 +169,24 @@ public class SplashActivity extends Activity {
     /**
      * 弹出安卓apk的弹窗
      */
-    private void installApk() {
-        /**
-         *  <intent-filter>
-         <action android:name="android.intent.action.VIEW" />
-         <category android:name="android.intent.category.DEFAULT" />
-         <data android:scheme="content" /> //content : 从内容提供者中获取数据  content://
-         <data android:scheme="file" /> // file : 从文件中获取数据
-         <data android:mimeType="application/vnd.android.package-archive" />
-         </intent-filter>
-         */
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.VIEW");
-        intent.addCategory("android.intent.category.DEFAULT");
-        intent.setDataAndType(Uri.fromFile(new File(sdPath, "app-debug.apk")), "application/vnd.android.package-archive");
-        startActivityForResult(intent, 0);
-
-
-    }
+//    private void installApk() {
+//        /**
+//         *  <intent-filter>
+//         <action android:name="android.intent.action.VIEW" />
+//         <category android:name="android.intent.category.DEFAULT" />
+//         <data android:scheme="content" /> //content : 从内容提供者中获取数据  content://
+//         <data android:scheme="file" /> // file : 从文件中获取数据
+//         <data android:mimeType="application/vnd.android.package-archive" />
+//         </intent-filter>
+//         */
+//        Intent intent = new Intent();
+//        intent.setAction("android.intent.action.VIEW");
+//        intent.addCategory("android.intent.category.DEFAULT");
+//        intent.setDataAndType(Uri.fromFile(new File(sdPath, "app-debug.apk")), "application/vnd.android.package-archive");
+//        startActivityForResult(intent, 0);
+//
+//
+//    }
 
 
 //    DownloadUtil.get().download(url, "download", new DownloadUtil.OnDownloadListener() {
@@ -366,36 +366,36 @@ public class SplashActivity extends Activity {
     }
 
 
-    public static void installApkFile(Context context, String filePath) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(context, "com.example.administrator.mobilesafe", new File(filePath));
-            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-        } else {
-            intent.setDataAndType(Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
-        context.startActivity(intent);
-    }
+//    public static void installApkFile(Context context, String filePath) {
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//            Uri contentUri = FileProvider.getUriForFile(context, "com.example.administrator.mobilesafe", new File(filePath));
+//            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+//        } else {
+//            intent.setDataAndType(Uri.parse("file://" + filePath), "application/vnd.android.package-archive");
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        }
+//        context.startActivity(intent);
+//    }
 
 
     /**
      * 判断是否是8.0,8.0需要处理未知应用来源权限问题,否则直接安装
      */
-    private void checkIsAndroidO() {
-        if (Build.VERSION.SDK_INT >= 26) {
-            boolean b = getPackageManager().canRequestPackageInstalls();
-            System.out.println("是否有安装权限:" + b);
-            if (b) {
-                installApkFile(getBaseContext(), sdPath + "/app-debug.apk");//安装应用的逻辑(写自己的就可以)
-            } else {
-                //请求安装未知应用来源的权限
-                requestPermission();
-            }
-        } else {
-            installApkFile(getBaseContext(), sdPath + "/app-debug.apk");
-        }
-
-    }
+//    private void checkIsAndroidO() {
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            boolean b = getPackageManager().canRequestPackageInstalls();
+//            System.out.println("是否有安装权限:" + b);
+//            if (b) {
+//                installApkFile(getBaseContext(), sdPath + "/app-debug.apk");//安装应用的逻辑(写自己的就可以)
+//            } else {
+//                //请求安装未知应用来源的权限
+//                requestPermission();
+//            }
+//        } else {
+//            installApkFile(getBaseContext(), sdPath + "/app-debug.apk");
+//        }
+//
+//    }
 }
