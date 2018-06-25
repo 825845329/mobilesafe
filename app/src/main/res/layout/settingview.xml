@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="提示更新"
+        android:text="提示更新1"
         android:textColor="#0a0a0a"
         android:textSize="24sp" />
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_setting_title"
         android:layout_marginLeft="5dp"
-        android:text="设置提示更新"
+        android:text="设置提示更新1"
         android:textSize="18sp" />
 
     <CheckBox
