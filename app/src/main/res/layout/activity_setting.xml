@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fjnade="http://schemas.android.com/apk/res/com.example.administrator.mobilesafe"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ResAuto">
 
     <TextView
         android:id="@+id/tv_home"
@@ -17,6 +20,9 @@
 
   <ui.SettingView
       android:id="@+id/activity_setting"
+      fjnade:title = "提示更新"
+      fjnade:desc_on = "开启提示更新"
+      fjnade:desc_off = "关闭提示更新"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
