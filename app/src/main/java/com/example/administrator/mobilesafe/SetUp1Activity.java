@@ -13,13 +13,10 @@ public class SetUp1Activity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup1);
 
-       findViewById(R.id.btn_set1).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(SetUp1Activity.this,SetUp2Activity.class);
-               startActivity(intent);
-           }
-       });
+    }
 
+    public void next(View view){
+        Intent intent = new Intent(SetUp1Activity.this,SetUp2Activity.class);
+        startActivity(intent);
     }
 }

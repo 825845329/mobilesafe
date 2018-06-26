@@ -6,20 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-public class SetUp2Activity extends Activity{
-
+public class SetUp4Activity extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup2);
+        setContentView(R.layout.activity_setup4);
     }
 
     public void pre(View view){
-        Intent intent = new Intent(this,SetUp1Activity.class);
-        startActivity(intent);
-    }
-
-    public void next(View view){
         Intent intent = new Intent(this,SetUp3Activity.class);
         startActivity(intent);
     }

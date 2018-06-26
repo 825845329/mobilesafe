@@ -105,15 +105,9 @@
             />
 
 
-        <Button
-            android:id="@+id/btn_set1"
-            android:text="下一步"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/button"
-            android:layout_width="wrap_content"
-            android:drawableRight="@drawable/next"
-            android:layout_height="wrap_content" />
+ <Button
+    style="@style/next" />
+
 
     </RelativeLayout>
 
