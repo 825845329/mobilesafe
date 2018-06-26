@@ -238,7 +238,9 @@ public class SplashActivity extends Activity {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         System.out.println("请求失败");
-                        message.what = MSG_HTTP_FAILURE;
+//                        message.what = MSG_HTTP_FAILURE;
+                        message.what = MSG_UPDATE_DIALOG;
+                        handler.sendMessage(message);
                     }
 
                     //请求成功执行的方法
@@ -257,6 +259,7 @@ public class SplashActivity extends Activity {
                             //如果code的版本和软件的版本不一致就弹出对话框
                             if (!code.equals(versionName)) {
                                 message.what = MSG_UPDATE_DIALOG;
+//                                handler.sendMessage(message);
                             }
 
                         } catch (IOException e) {
