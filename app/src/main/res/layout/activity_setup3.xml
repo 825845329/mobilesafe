@@ -32,6 +32,7 @@
         android:textSize="26sp" />
 
     <EditText
+        android:id="@+id/et_safePhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入安全号码"
@@ -39,6 +40,7 @@
 
 
     <Button
+        android:onClick="getContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/green_button"

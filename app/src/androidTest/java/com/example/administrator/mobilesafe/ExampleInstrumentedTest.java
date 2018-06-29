@@ -23,4 +23,10 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.example.administrator.mobilesafe", appContext.getPackageName());
     }
+
+    @Test
+    public void getContactList() {
+        ContactActivity  contactActivity = new ContactActivity();
+        assertEquals("com.example.administrator.mobilesafe", contactActivity.getContactList());
+    }
 }

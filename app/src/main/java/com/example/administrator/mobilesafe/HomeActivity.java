@@ -53,8 +53,14 @@ public class HomeActivity extends Activity {
                         }else{
                             enterInputPassword();
                         }
-
                         break;
+
+                    case 7:
+                        Intent intent1 = new Intent(HomeActivity.this,QueryPhoneActivity.class);
+                        startActivity(intent1);
+                        break;
+
+
                     case 8:
                         intent = new Intent(HomeActivity.this, SettingActivity.class);
                         startActivity(intent);

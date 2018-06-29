@@ -23,6 +23,8 @@
         <activity android:name=".SetUp2Activity"/>
         <activity android:name=".SetUp3Activity"/>
         <activity android:name=".SetUp4Activity"/>
+        <activity android:name=".ContactActivity"/>
+        <activity android:name=".QueryPhoneActivity"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.administrator.mobilesafe"
