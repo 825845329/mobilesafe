@@ -25,6 +25,7 @@
         <activity android:name=".SetUp4Activity"/>
         <activity android:name=".ContactActivity"/>
         <activity android:name=".QueryPhoneActivity"/>
+        <activity android:name=".DragViewActivity"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.administrator.mobilesafe"

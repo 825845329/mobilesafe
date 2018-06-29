@@ -24,7 +24,17 @@
       fjnade:desc_on = "开启提示更新"
       fjnade:desc_off = "关闭提示更新"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+      android:layout_height="wrap_content"/>
 
+    <ui.SettingClickView
+        android:id="@+id/scv_setting_changedbg"
+        fjnade:title = "提示更新"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
+    <ui.SettingClickView
+        android:id="@+id/scv_setting_location"
+        fjnade:title = "归属地提示框位置"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
